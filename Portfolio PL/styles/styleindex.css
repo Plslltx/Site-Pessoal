@@ -286,6 +286,19 @@ main {
      1px  1px 0 #000000;
 }
 
+.textpaginicial2 {
+  font-family: 'Revalia', cursive;
+  font-size: 37px;
+  text-align: right;
+  margin-top: 25vh;
+  padding-right: 3vw;
+  text-shadow: 
+    -1px -1px 0 #000000,  
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000;
+}
+
 .botao-fale-comigo {
   display: inline-block; 
   margin-top: 40px;
