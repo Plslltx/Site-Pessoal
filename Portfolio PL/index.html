@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro</title>
+
+    <link rel="preload" href="styles/fonts/Tilt_Prism/TiltPrism-Regular-VariableFont_XROT,YROT.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="styles/fonts/Alumni_Sans_Pinstripe/AlumniSansPinstripe-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="styles/fonts/Revalia/Revalia-Regular.ttf" as="font" type="font/ttf" crossorigin>
+
+    <link rel="stylesheet" href="styles/styleindex.css">
+</head>
+
+<body> 
+    <div class="bg-orbs" aria-hidden="true">
+      <div class="orb orb--tl"></div>
+      <div class="orb orb--bl"></div>
+      <div class="orb orb--br"></div>
+    </div>
+
+    <header class="site-header">
+        <nav class="main-nav" aria-label="Navegação principal">
+            <ul>
+                <li><a href="#inicio" class="active">início</a></li>
+                <li><a href="#sobre">sobre</a></li>
+                <li><a href="#projetos">projetos</a></li>
+                <li><a href="#curriculo">currículo</a></li>
+            </ul>
+        </nav>
+
+        <h1 class="logo">PL</h1>
+
+        <div class="social-icons">
+            <a href="https://github.com/Plslltx" aria-label="Github"><img src="Imagens/icons/Social media/github.png" alt="Github"></a>
+            <a href="https://discord.com/users/p3droluk45" aria-label="Discord"><img src="Imagens/icons/Social media/discord.png" alt="Discord"></a>
+            <a href="https://instagram.com/p.lzinn" aria-label="Instagram"><img src="Imagens/icons/Social media/instagram.png" alt="Instagram"></a>
+            <a href="https://www.behance.net/pedrolteixeir" aria-label="Behance"><img src="Imagens/icons/Social media/behance.png" alt="Behance"></a>
+            <a href="https://www.linkedin.com/in/pedro-lucas-teixeira-777a29320/?skipRedirect=true" aria-label="Linkedin"><img src="Imagens/icons/Social media/linkedin.png" alt="Linkedin"></a>
+            <a href="https://dev.to/plslltx" aria-label="Devto"><img src="Imagens/icons/Social media/dev.png" alt="Devto"></a>
+        </div>
+    </header>
+    
+    <main>
+        <!-- conteúdo da página -->
+         <h2 class="textpaginicial">Olá, me chamo Pedro Lucas!</h2>
+         <h3 class="textpaginicial2">Estudante de Ciências da Computação. Aprendendo e evoluindo como dev.</h3>
+         <a href="#" class="botao-fale-comigo">Fale Comigo!</a>
+    </main>
+
+      <script>
+       document.addEventListener('DOMContentLoaded', function () {
+  const links = document.querySelectorAll('.main-nav a');
+  function setActiveByHash() {
+    const hash = location.hash || '#inicio';
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
+  }
+  window.addEventListener('hashchange', setActiveByHash);
+  setActiveByHash();
+});
+
+      // marca ao clicar (ajuda em navegadores que não mudam hash imediatamente)
+      links.forEach(a => {
+        a.addEventListener('click', () => {
+          links.forEach(l => l.classList.remove('active'));
+          a.classList.add('active');
+        });
+      });
+
+      window.addEventListener('hashchange', setActiveByHash);
+      setActiveByHash();
+  </script>
+</body>
+</html>

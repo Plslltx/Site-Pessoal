@@ -1,0 +1,333 @@
+:root {
+  --bg: #000000;
+  --accent: #00BBFF;
+  --text: rgba(255,255,255,0.92);
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* fontes */
+@font-face {
+  font-family: 'Tilt Prism';
+  src: url('./fonts/Tilt_Prism/TiltPrism-Regular-VariableFont_XROT,YROT.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Alumni Sans Pinstripe';
+  src: url('./fonts/Alumni_Sans_Pinstripe/AlumniSansPinstripe-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Revalia';
+  src: url('./fonts/Revalia/Revalia-Regular.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate3d(0,0,0);
+  mix-blend-mode: screen;
+  filter: blur(72px) saturate(150%);
+  width: 120vmax;
+  height: 120vmax;
+  opacity: 1;
+}
+
+.orb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.02) 18%, transparent 30%),
+    repeating-conic-gradient(from 0deg, rgba(255,255,255,0.12) 0deg 6deg, transparent 6deg 12deg);
+  -webkit-mask: radial-gradient(circle at center, black 28%, transparent 78%);
+  mask: radial-gradient(circle at center, black 28%, transparent 78%);
+  transform-origin: 50% 50%;
+  animation: orb-spin 20s linear infinite;
+}
+
+/* Bola de luz azul claro*/
+.orb--tl {
+  top: -30vmin;
+  left: -22vmin;
+  width: 90vmax;
+  height: 90vmax;
+  filter: blur(84px) saturate(160%);
+}
+.orb--tl::before {
+  background:
+    radial-gradient(circle at 35% 30%, rgba(0,187,255,0.98), rgba(0,187,255,0.18) 18%, transparent 30%),
+    repeating-conic-gradient(from 0deg, rgba(0,187,255,0.36) 0deg 6deg, transparent 6deg 12deg);
+  animation-duration: 24s;
+}
+
+/* bola de luz roxa */
+.orb--bl {
+  bottom: -34vmin;
+  left: -34vmin;
+  width: 120vmax;
+  height: 120vmax;
+  filter: blur(96px) saturate(170%);
+}
+.orb--bl::before {
+  background:
+    radial-gradient(circle at 30% 70%, rgba(85,0,255,0.98), rgba(85,0,255,0.18) 18%, transparent 30%),
+    repeating-conic-gradient(from 14deg, rgba(85,0,255,0.34) 0deg 6deg, transparent 6deg 12deg);
+  animation-duration: 30s;
+  animation-direction: reverse;
+}
+
+/* bola de luz rosa*/
+.orb--br {
+  bottom: -24vmin;
+  right: -24vmin;
+  width: 80vmax;
+  height: 80vmax;
+  filter: blur(76px) saturate(140%);
+}
+.orb--br::before {
+  background:
+    radial-gradient(circle at 70% 70%, rgba(202,97,255,0.30), rgba(202,97,255,0.08) 18%, transparent 30%),
+    repeating-conic-gradient(from -10deg, rgba(202,97,255,0.28) 0deg 6deg, transparent 6deg 12deg);
+  animation-duration: 22s;
+}
+
+@keyframes orb-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.site-header,
+main {
+  position: relative;
+  z-index: 10;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 28px;
+  background: transparent;
+  height: 64px;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.main-nav a {
+  font-family: 'Alumni Sans Pinstripe', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 20px;     
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 6px 8px;
+  transition: color .18s, background .18s;
+}
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--accent);
+  background: rgba(255,255,255,0.03);
+  border-radius: 4px;
+  outline: none;
+}
+
+
+.main-nav a {
+  position: relative;
+}
+
+.main-nav a {
+  position: relative;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  bottom: -8px;
+  height: 3px;
+  width: 56%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: transform .22s cubic-bezier(.2,.9,.2,1), opacity .22s;
+  opacity: 0;
+  pointer-events: none;
+}
+.main-nav a.active::after {
+  transform: translateX(-50%) scaleX(1);
+  opacity: 1;
+}
+.main-nav a:hover::after,
+.main-nav a:focus::after {
+  transform: translateX(-50%) scaleX(0);
+  opacity: 0;
+}
+@media (max-width: 700px) {
+  .main-nav a::after { bottom: -6px; height: 2.5px; width: 60%; }
+}
+@media (max-width: 480px) {
+  .main-nav a::after { bottom: -5px; height: 2px; width: 70%; }
+}
+
+
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--accent);
+  background: transparent;
+  border-radius: 0;        
+  outline: none;
+}
+.main-nav a.active {
+  background: transparent;
+}
+
+
+.logo {
+  font-family: 'Tilt Prism', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 40px;          
+  letter-spacing: 0.12em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  color: var(--accent);
+  pointer-events: none;
+  z-index: 12;
+  text-shadow: 0 0 8px rgba(0,187,255,0.12);
+}
+
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.social-icons a {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.95;
+}
+.social-icons img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1) saturate(1.1);
+}
+
+@media (max-width: 900px) {
+  .main-nav ul { gap: 14px; }
+  .main-nav a { font-size: 16px; padding: 5px 6px; }
+  .social-icons img { width: 24px; height: 24px; }
+  .logo { font-size: 32px; }
+}
+
+@media (max-width: 480px) {
+  .main-nav { display: none; }
+  .logo { font-size: 28px; }
+  .social-icons img { width: 22px; height: 22px; }
+}
+
+
+.textpaginicial {
+  font-family: 'Revalia', cursive;
+  font-size: 37px;
+  text-align: right;
+  margin-top: 25vh;
+  padding-right: 3vw;
+  text-shadow: 
+    -1px -1px 0 #000000,  
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000;
+}
+
+.botao-fale-comigo {
+  display: inline-block; 
+  margin-top: 40px;
+  padding: 18px 20px;
+  background: linear-gradient(0deg, #00a2e0);
+  margin-right: 18vw;
+  color: white; 
+  text-shadow: 
+    -1px -1px 0 #000000,  
+     1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px  1px 0 #000000;
+  font-family: 'Revalia', cursive; 
+  font-size: 17px; 
+  font-weight: bold;
+  text-decoration: none; 
+  border: none;
+  border-radius: 50px; 
+  box-shadow: inset 0 7px 20px #4438b0,
+              inset 0 -4px 6px #6082b1;
+  cursor: pointer;
+  transition: transform 0.1s ease-out, background-color 0.2s;
+}
+
+main {
+  min-height: calc(100vh - 64px);
+  padding: 27px;
+  text-align: right;
+  padding-right: 7vw;
+}
+
+
+/*Efeito de passar o mouse em cima do botão*/
+.botao-fale-comigo:hover {
+  background: linear-gradient(0deg, #00b3ff);
+  box-shadow: inset 0 7px 20px #4438b0,
+              inset 0 -4px 6px #6082b1;
+  transform: translateY(2px);
+}
+
+/* Efeito quando clica */
+.botao-fale-comigo:active {
+  transform: translateY(2px); 
+  box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.4); 
+}
